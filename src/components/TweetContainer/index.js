@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import Tweet from '../Tweet';
-import style from './index.css';
+import './index.css';
 
 class TweetContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: [{"twid":793117548996800500,"active":false,"author":"Mohamad Asry","avatar":"http://pbs.twimg.com/profile_images/789505557421928448/TmFsQwe9_normal.jpg","body":"RT @nrsarahsenrose: ada sesapa kenal?  kesian makcik ni 😭 tolong viralkan @KuantanTV https://t.co/z9pGYxWYZk","date":"Mon Oct 31 15:48:53 +0000 2016","screenname":"NiCeGuYz_"}]
+      tweets: []
     };
   }
   componentDidMount() {
-    const socket = io.connect('http://localhost:9000');
+    // initialize stream
+    const socket = io.connect('http://sthobis.xyz:9001');
     socket.on('tweet', (data) => {
       this.addTweet(data);
     });
@@ -27,11 +28,23 @@ class TweetContainer extends Component {
   render() {
     return (
       <div className="App">
+        <h1>TOLONG!</h1>
+        <div className="Loading">
+          <div />
+        </div>
         {
-          this.state.tweets.map((tweet, idx) => {
-            return <Tweet data={tweet} key={idx} />
-          })
+          this.state.tweets.length > 0 &&
+          <ul className="TweetList">
+            {
+              this.state.tweets.map((tweet, idx) => {
+                return <li><Tweet data={tweet} key={idx} /></li>
+              })
+            }
+          </ul>
         }
+        <footer>
+          <a href="https://github.com/sthobis/tolong">source</a>
+        </footer>
       </div>
     );
   }

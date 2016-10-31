@@ -1,24 +1,57 @@
-.App {
+.TweetList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.TweetList li {
+  border: 1px solid #e1e8ed;
+  border-bottom: none;
+}
+
+.TweetList li:last-child {
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.TweetList li::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* https://codepen.io/alanshortis/pen/eJLVXr */
+.Loading {
   text-align: center;
+  margin: 20px 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Loading > div {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 0.25rem solid rgba(0, 0, 0, 0.2);
+  border-top-color: #1da1f2;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+  display: inline-block;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }

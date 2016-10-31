@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import style from './index.css';
+import moment from 'moment';
+import { parseURL, parseUsername, parseHashtag } from '../../utils/tweetParser';
+import './index.css';
 
 class Tweet extends Component {
   render() {
     const { data } = this.props;
     return (
-      <div className={style.TweetBox}>
-        <img src={data.avatar} alt="Avatar" />
-        <p>{data.body}</p>
-        <p>{data.date}</p>
-        <p><a href={'http://twitter.com/' + data.screenname}>@{data.screenname}</a></p>
+      <div className="TweetBox">
+        <img className="avatar" src={data.avatar} alt="Avatar" />
+        <div className="meta">
+          <a className="meta__author" href={'http://twitter.com/' + data.screenname}>{data.author}</a>
+          <span className="meta__screenname">@{data.screenname}</span>
+          <span className="meta__timestamp">{moment(data.date).fromNow(true) + ' ago'}</span>
+        </div>
+        <p dangerouslySetInnerHTML={{__html: parseHashtag(parseUsername(parseURL(data.body)))}} />
       </div>
     );
   }

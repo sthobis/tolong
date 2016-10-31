@@ -4,7 +4,7 @@ var app = require('./app'),
   twitter = require('twitter'),
   streamHandler = require('./utils/streamHandler');
 
-var PORT = process.env.PORT || 9000;
+var PORT = process.env.PORT || 9001;
 
 // Create http server
 var server = http.createServer(app).listen(PORT, function() {

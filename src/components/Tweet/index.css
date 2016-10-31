@@ -1,3 +1,52 @@
 .TweetBox {
-  border: 1px solid #e1e8ed;
+  position: relative;
+  display: block;
+  transition: all .5s;
+  min-height: 70px;
+  padding: 11px 11px 11px 70px;
+  box-sizing: border-box;
+}
+
+.TweetBox .avatar {
+  position: absolute;
+  left: 11px;
+  top: 11px;
+}
+
+.TweetBox p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.meta {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.meta__author {
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 11px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.meta__screenname {
+  margin-right: 11px;
+  display: inline-block;
+}
+
+.meta__timestamp {
+  color: #929292;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+  .TweetBox p {
+    font-size: 13px;
+  }
+  .meta__author {
+    font-size: 13px;
+  }
 }
